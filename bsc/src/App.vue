@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Buy-sell-car</h1>
+    <hr>
+    <AdvertList 
+      v-bind:adverts="adverts"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AdvertList from '@/components/AdvertList'
 export default {
   name: 'App',
+  data() {
+    return {
+      adverts: [
+        {id: 1, title: 'Audi A6', price: 1800000},
+        {id: 2, title: 'BMW 5-series', price: 1020000},
+        {id: 3, title: 'Mercedes-benz E-class', price: 1500000}
+      ]
+    }
+  },
   components: {
-    HelloWorld
+    AdvertList
   }
 }
 </script>
