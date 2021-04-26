@@ -1,11 +1,9 @@
 <template>
     <div>
-        <ul>
             <AdvertItem 
                 v-for="advert of adverts"
                 v-bind:advert="advert"
             />
-        </ul>
     </div>
 </template>
 
