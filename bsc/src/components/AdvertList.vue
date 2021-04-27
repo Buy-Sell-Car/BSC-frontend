@@ -3,6 +3,7 @@
             <AdvertItem 
                 v-for="advert of adverts"
                 v-bind:advert="advert"
+                :key="advert.id"
             />
     </div>
 </template>
