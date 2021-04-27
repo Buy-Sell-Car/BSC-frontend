@@ -3,15 +3,15 @@
         <li class="list-group-item">
             <div class="row">
                 <a class="advert_item_link col-9 mb-2" href="#">
-                    {{ advert.brand }} {{ advert.model }}
+                    {{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}
                 </a>
                 <div class="advert_item_date col-3" style="text-align: right;">
-                    {{ advert.date }}
+                    {{ advert.advert_date }}
                 </div>
             </div>
             <div class="row">
                 <div class="wrapper col-4">
-                    <img class="main_img" v-bind:src="advert.main_img"  alt="">
+                    <img class="main_img" v-bind:src="advert.advertimage_set[0].image"  alt="">
                 </div>
                 <div class="col-8 p-0">
                     <div class="advert_item_info col-5">
@@ -19,7 +19,7 @@
                             Пробег: {{ advert.mileage }} км
                         </div>
                         <div class="advert_item_year">
-                            Год выпуска: {{ advert.year }}
+                            Год выпуска: {{ advert.prod_year }}
                         </div>
                         <div class="advert_item_price mt-5">
                             {{ advert.price }} ₽
