@@ -6,14 +6,14 @@
 
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
-              <router-link to="/"><b-nav-item href="#">Объявления</b-nav-item></router-link>
-              <router-link to="/"><b-nav-item href="#">Продать</b-nav-item></router-link>
+              <b-nav-item to="/">Объявления</b-nav-item>
+              <b-nav-item to="/">Продать</b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
-              <router-link to="/"><b-nav-item href="#">Войти</b-nav-item></router-link>
-              <router-link to="/"><b-nav-item href="#">Зарегистрироваться</b-nav-item></router-link>
+              <b-nav-item to="/">Войти</b-nav-item>
+              <b-nav-item to="/">Зарегистрироваться</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>
