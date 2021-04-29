@@ -12,7 +12,7 @@
 
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
-              <b-nav-item to="/">Войти</b-nav-item>
+              <b-nav-item :to="{name: 'login'}">Войти</b-nav-item>
               <b-nav-item to="/">Зарегистрироваться</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
