@@ -1,6 +1,7 @@
 <template>
     <ul class="list-group mt-4">
         <li class="list-group-item">
+        <b-link :to="{name: 'Detail', params: {id: advert.id}}">
             <div class="row">
                 <a class="advert_item_link col-9 mb-2" href="#">
                     {{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}
@@ -27,6 +28,7 @@
                     </div>
                 </div>
             </div>
+        </b-link>
         </li>
     </ul>
 </template>
