@@ -82,10 +82,10 @@
                 <span class="CardRow_param"> {{ advert.profile.city }}</span>
               </li>
               </ul>
-              <a class="TelLink" :href="`tel:+7${advert.profile.tel}`">
+              <a class="TelLink" :href="`tel:${advert.profile.tel}`">
                 <div class="TelButton">
                   <span class="TelLabel">Позвонить:</span>
-                  <div>+7{{advert.profile.tel}}</div>
+                  <div>{{advert.profile.tel}}</div>
                 </div>
               </a>
             </div>
