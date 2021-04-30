@@ -8,11 +8,13 @@ const store = new Vuex.Store({
   state: {
     accessToken: null,
     refreshToken: null,
+    username: null,
   },
   mutations: {
-    updateStorage (state, {access, refresh}) {
+    updateStorage (state, {access, refresh, username}) {
       state.accessToken = access
       state.refreshToken = refresh
+      state.username = username
     },
   },
   actions: {
@@ -23,7 +25,7 @@ const store = new Vuex.Store({
           password: usercredentials.password
         })
         .then(response => {
-          context.commit('updateStorage', { access:response.data.access, refresh:response.data.refresh})
+          context.commit('updateStorage', { access:response.data.access, refresh:response.data.refresh, username: usercredentials.username})
           resolve()
         })
         .catch(err => {
