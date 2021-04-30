@@ -33,6 +33,11 @@ const store = new Vuex.Store({
         })
       })
     }
+  },
+  getters: {
+    loggedIn (state) {
+        return state.accessToken != null
+    }
   }
 })
 
