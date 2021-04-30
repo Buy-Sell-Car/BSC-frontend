@@ -72,13 +72,14 @@
       </b-form-group>
 
       <b-form-group id="input-group-7" label="Телефон:" label-for="input-7">
-        <b-form-input
+        <masked-input
           id="input-7"
           v-model="phone"
+          mask="\+\7 (111) 111-11-11"
           type="text"
           placeholder="Телефон"
           required
-        ></b-form-input>
+        />
       </b-form-group>
 
       <b-button block type="submit" variant="primary">Зарегистрироваться</b-button>
@@ -90,6 +91,8 @@
 
 <script>
   import axios from 'axios'
+  import MaskedInput from 'vue-masked-input'
+
   export default {
     data() {
       return {
@@ -103,6 +106,9 @@
         showDismissibleAlert: false,
         err: null
       }
+    },
+    components: {
+      MaskedInput
     },
     methods: {
       register() {
