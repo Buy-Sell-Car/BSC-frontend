@@ -16,6 +16,11 @@ const store = new Vuex.Store({
       state.refreshToken = refresh
       state.username = username
     },
+    destroyToken (state) {
+      state.accessToken = null,
+      state.refreshToken = null,
+      state.username = null
+    }
   },
   actions: {
     userLogin (context, usercredentials) {
@@ -32,6 +37,11 @@ const store = new Vuex.Store({
           reject(err)
         })
       })
+    },
+    userLogout (context) {
+      if (context.getters.loggedIn) {
+        context.commit('destroyToken')
+      }
     }
   },
   getters: {
