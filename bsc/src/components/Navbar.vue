@@ -20,7 +20,7 @@
                 <template #button-content>
                     <em>{{ $store.state.username }}</em>
                 </template>
-                <b-dropdown-item href="#">Профиль</b-dropdown-item>
+                <b-dropdown-item :to="{name: 'user', params: {id: $store.state.id}}">Профиль</b-dropdown-item>
                 <b-dropdown-item @click="logout">Выйти</b-dropdown-item>
                 </b-nav-item-dropdown>
             

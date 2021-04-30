@@ -116,7 +116,7 @@
           tel: this.phone
         })
         .then(() => {
-            this.$router.push({name: 'login'})
+            this.$router.push({name: 'user'})
         })
         .catch(err => {
             this.err = err.request.response,
