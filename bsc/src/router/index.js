@@ -28,12 +28,17 @@ const routes = [
     meta: {
       requiresLogin: true
     },
-    
   },
   {
     path: '/register',
     name: 'register',
     component: () => import('../views/Register.vue')
+  },
+  {
+    path: '/user/:id',
+    name: 'user',
+    props : true,
+    component: () => import('../views/User.vue')
   },
 //   {
 //     path: '/about',

@@ -80,6 +80,7 @@
           placeholder="+7 ("
           required
         ></b-form-input>
+        {{phone}}
       </b-form-group>
 
       <b-button block type="submit" variant="primary">Зарегистрироваться</b-button>
@@ -116,7 +117,7 @@
           tel: this.phone
         })
         .then(() => {
-            this.$router.push({name: 'login'})
+            this.$router.push({name: 'user'})
         })
         .catch(err => {
             this.err = err.request.response,
