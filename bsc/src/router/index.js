@@ -22,9 +22,9 @@ const routes = [
     component: () => import('../views/Login.vue')
   },
   {
-    path: '/sell',
-    name: 'sell',
-    component: Home,
+    path: '/publish',
+    name: 'publish',
+    component: () => import('../views/Publish.vue'),
     meta: {
       requiresLogin: true
     },

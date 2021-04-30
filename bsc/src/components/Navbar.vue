@@ -9,7 +9,7 @@
           <b-collapse id="nav-collapse" is-nav>
             <b-navbar-nav>
               <b-nav-item to="/">Объявления</b-nav-item>
-              <b-nav-item :to="{name: 'sell'}">Продать</b-nav-item>
+              <b-nav-item :to="{name: 'publish'}">Продать</b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items -->
