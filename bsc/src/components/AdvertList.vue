@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="col-10 m-auto">
             <AdvertItem 
                 v-for="advert of adverts"
                 v-bind:advert="advert"

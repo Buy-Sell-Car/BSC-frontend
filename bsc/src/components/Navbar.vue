@@ -2,7 +2,7 @@
 <header>
     <div id="nav">
         <b-navbar toggleable="lg" type="dark" variant="info">
-          <b-navbar-brand href="#">BSC</b-navbar-brand>
+          <b-navbar-brand to="/">BSC</b-navbar-brand>
 
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
