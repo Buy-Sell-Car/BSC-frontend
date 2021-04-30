@@ -104,9 +104,6 @@
         err: null
       }
     },
-    components: {
-      MaskedInput
-    },
     methods: {
       register() {
         this.$api.post('/api/profiles/', {
