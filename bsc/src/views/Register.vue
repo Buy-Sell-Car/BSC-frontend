@@ -90,8 +90,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
   export default {
     data() {
       return {
@@ -111,7 +109,7 @@
     },
     methods: {
       register() {
-        axios.post('http://127.0.0.1:8000/api/profiles/', {
+        this.$api.post('/api/profiles/', {
           username: this.username,
           first_name: this.firstname,
           last_name: this.lastname,

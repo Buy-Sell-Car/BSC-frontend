@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 import store from './store'
+import { getApi } from './axios-api'
 import VueMask from 'v-mask'
 
 Vue.use(BootstrapVue)
@@ -13,6 +14,7 @@ Vue.use(VueMask)
 
 
 Vue.config.productionTip = false
+Vue.prototype.$api = getApi;
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresLogin)) {

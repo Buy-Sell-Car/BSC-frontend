@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import AdvertList from '@/components/AdvertList'
 
 export default {
@@ -20,9 +19,9 @@ export default {
   components: {
     AdvertList
   },
-  mounted() {
-    axios
-      .get('http://127.0.0.1:8000/api/adverts/')
+  created() {
+    this.$api
+      .get('/api/adverts/')
       .then(response => (this.adverts = response.data));
   }
 }

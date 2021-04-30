@@ -194,8 +194,6 @@ h1 {
 </style>
 
 <script>
-import axios from 'axios'
-
 export default {
   props: ['id'],
   name: 'Home',
@@ -215,9 +213,9 @@ export default {
       }
   },
 
-  mounted() {
-    axios
-      .get('http://127.0.0.1:8000/api/adverts/'+this.id+'/')
+  created() {
+    this.$api
+      .get('/api/adverts/'+this.id+'/')
       .then(response => (this.advert = response.data));
   }
 }
