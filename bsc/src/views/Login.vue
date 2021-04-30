@@ -24,8 +24,9 @@
 
       <b-button block type="submit" variant="primary">Войти</b-button>
     </b-form>
+
+    <div>Еще не зарегистрированы? <b-link :to="{name: 'register'}">Зарегистрироваться</b-link></div>
     
-    <b-button block to="/">Зарегистрироваться</b-button>
   </div>
 </template>
 
