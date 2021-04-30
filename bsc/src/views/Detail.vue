@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="advert">
     {{ advert }}
     <h1>{{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}</h1>
     <!-- Карусель -->
