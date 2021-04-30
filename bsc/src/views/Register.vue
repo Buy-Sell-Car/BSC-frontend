@@ -77,7 +77,7 @@
           v-model="phone"
           v-mask="'+7 (###) ###-##-##'"
           type="text"
-          placeholder="Телефон"
+          placeholder="+7 ("
           required
         ></b-form-input>
       </b-form-group>
