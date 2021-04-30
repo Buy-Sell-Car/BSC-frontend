@@ -34,7 +34,6 @@ const store = new Vuex.Store({
         })
         .then(response => {
           context.commit('updateStorage', { access:response.data.access, refresh:response.data.refresh, username: response.data.user, id:response.data.id})
-          console.log(response)
           resolve()
         })
         .catch(err => {
