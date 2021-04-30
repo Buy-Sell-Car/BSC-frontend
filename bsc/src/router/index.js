@@ -15,7 +15,20 @@ const routes = [
     name: 'Detail',
     props : true,
     component: () => import('../views/Detail.vue')
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/sell',
+    name: 'sell',
+    component: Home,
+    meta: {
+      requiresLogin: true
+    }
+  },
 //   {
 //     path: '/about',
 //     name: 'About',
