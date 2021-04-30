@@ -22,7 +22,7 @@
                                     {{ advert.carbody }} 
                                 </div>
                                 <div class="city mt-4">
-                                    {{ advert.profile.city }},пш {{advert.advert_date}}
+                                    {{ advert.profile.city }}, {{advert.advert_date}}
                                 </div>
                             </div>
                             <div class="column_params">
@@ -45,7 +45,6 @@
                     <div class="col-2">
                         {{ advert.mileage }} км
                     </div>
-
                 </div>
             </div>
         </b-link>
