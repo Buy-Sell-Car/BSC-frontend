@@ -1,10 +1,12 @@
 <template>
   <div v-if="advert">
-    {{ advert }}
-    <h1>{{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}</h1>
-    <!-- Карусель -->
+    <div class="row mt-5">
+    <h1 class="col-8">{{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}</h1>
+    <h1 class="col-4">{{ advert.price }} ₽</h1>
+    </div>
       <div class="row">
-        <div class="col-6">
+    <!-- Карусель -->
+        <div class="col-8">
             <b-carousel
               id="carousel-1"
               v-model="slide"
@@ -28,7 +30,7 @@
               </b-carousel-slide>
             </b-carousel>
         </div>
-        <div class="col-6">
+        <div class="col-4">
           <ul class="СardInfo">
               <li class="CardInfo_row">
                 <span class="CardRow_label">Год выпуска </span>
@@ -62,13 +64,48 @@
                 <span class="CardRow_label">Владельцы </span>
                 <span class="CardRow_param">{{ advert.owners }}</span>
               </li>
+              <li class="CardInfo_row">
+                <span class="CardRow_label">Дата публикации </span>
+                <span class="CardRow_param">{{ advert.advert_date }}</span>
+              </li>
           </ul>
+          <div class="CardSidebar">
+            <div class="CardSidebarActions">
+              <h5 class="text-center">Информация о продавце</h5>
+              <ul class="CardInfo">
+              <li class="CardInfo_row">
+                <span class="CardRow_label">Имя </span>
+                <span class="CardRow_param"> {{ advert.profile.first_name }}</span>
+              </li>
+              <li class="CardInfo_row">
+                <span class="CardRow_label">Город </span>
+                <span class="CardRow_param"> {{ advert.profile.city }}</span>
+              </li>
+              </ul>
+              <a class="TelLink" :href="`tel:+7${advert.profile.tel}`">
+                <div class="TelButton">
+                  <span class="TelLabel">Позвонить:</span>
+                  <div>+7{{advert.profile.tel}}</div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="mt-5 col-8">
+        <div class="comment">Комментарий продавца</div>
+        <div class="ad__text">{{advert.description}}</div><br>
+    </div>
   </div>
 </template>
 
 <style scoped>
+h1 {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+}
+
 .СardInfo {
   font-size: 15px;
   flex-wrap: wrap;
@@ -98,6 +135,61 @@
     display: block;
     padding: 3px 0;
     text-overflow: ellipsis;
+  }
+  
+.CardSidebar {
+    position: sticky;
+    top: 24px;
+    margin: 20px 0 0;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+.CardSidebarActions {
+  padding: 16px;
+}
+
+.TelLink {
+  text-decoration: none;
+  color: white;
+}
+
+.TelButton{
+  text-decoration: none;
+  font-size: 20px;
+  background-color: #5b0;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.TelButton:hover {
+  background-color: #77c933;
+}
+
+.TelLabel {
+  font-size: 14px;
+}
+
+.comment {
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: absolute;
+    top: -20px;
+    left: 50px;
+    background-color: #fff;
+}
+
+.ad__text {
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 25px;
+    border: 2px solid rgba(0, 0, 150, 0.3);
+    padding-left: 20px;
+    padding-top: 20px;
 }
 </style>
 
@@ -114,10 +206,6 @@ export default {
       sliding: null,
     }
   },
-  components: {
-  
-  },
-
   methods: {
       onSlideStart(slide) {
         this.sliding = true
