@@ -1,180 +1,117 @@
 <template>
     <div>
-        <b-form class="row">
+        <b-form class="row" @submit.prevent="publish">
             <div class="col-6">
-            <b-form-group
-                id="input-group-1"
-                label="Марка"
-                label-for="input-1"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-1"
-                v-model="username"
+                v-model="form.brand"
                 placeholder="Марка"
                 required
             ></b-form-input>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-2"
-                label="Модель"
-                label-for="input-2"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-2"
-                v-model="username"
+                v-model="form.carmodel"
                 placeholder="Модель"
                 required
             ></b-form-input>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-3"
-                label="Мощность "
-                label-for="input-3"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-3"
-                v-model="username"
+                v-model="form.power"
                 placeholder="Мощность"
                 required
             ></b-form-input>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-4"
-                label="Топливо"
-                label-for="input-4"
-            >
-            <b-form-select 
+            <b-form-select class="mt-3"
                 id="input-4"
-                v-model="fuel"
+                v-model="form.fuel"
                 :options="fuel_options"
                 required
             ></b-form-select>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-5"
-                label="Привод"
-                label-for="input-5"
-            >
-            <b-form-select 
+            <b-form-select class="mt-3"
                 id="input-5"
-                v-model="drive"
+                v-model="form.drive"
                 :options="drive_options"
                 required
             ></b-form-select>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-6"
-                label="Трансмиссия"
-                label-for="input-6"
-            >
-            <b-form-select 
+            <b-form-select class="mt-3"
                 id="input-6"
-                v-model="transmission"
+                v-model="form.transmission"
                 :options="transmission_options"
                 required
             ></b-form-select>
-            </b-form-group>
             </div>
 
             <div class="col-6">
-            <b-form-group
-                id="input-group-7"
-                label="Кузов"
-                label-for="input-7"
-            >
-            <b-form-select 
+            <b-form-select class="mt-3"
                 id="input-7"
-                v-model="carbody"
+                v-model="form.carbody"
                 :options="carbody_options"
                 required
             ></b-form-select>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-8"
-                label="Цена"
-                label-for="input-8"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-8"
-                v-model="username"
+                v-model="form.price"
                 placeholder="Цена"
                 required
             ></b-form-input>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-9"
-                label="Пробег"
-                label-for="input-9"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-9"
-                v-model="username"
+                v-model="form.mileage"
                 placeholder="Пробег"
                 required
             ></b-form-input>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-10"
-                label="Количество владельцев по ПТС"
-                label-for="input-10"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-10"
-                v-model="username"
+                v-model="form.owners"
                 placeholder="Количество владельцев по ПТС"
                 required
             ></b-form-input>
-            </b-form-group>
-    
-            <b-form-group
-                id="input-group-11"
-                label="Цвет"
-                label-for="input-11"
-            >
-            <b-form-select 
+
+            <b-form-select class="mt-3"
                 id="input-7"
-                v-model="color"
+                v-model="form.color"
                 :options="color_options"
                 required
             ></b-form-select>
-            </b-form-group>
 
-            <b-form-group
-                id="input-group-12"
-                label="Год выпуска"
-                label-for="input-12"
-            >
-            <b-form-input
+            <b-form-input class="mt-3"
                 id="input-12"
-                v-model="username"
+                v-model="form.prod_year"
                 placeholder="Год выпуска"
                 required
             ></b-form-input>
-            </b-form-group>
-    
-            <b-form-group
-                id="input-group-13"
-                label="Описание"
-                label-for="input-13"
-            >
-            <b-form-input
+            </div>
+            <div class="col-12">
+
+            <b-form-textarea class="mt-3"
                 id="input-13"
-                v-model="username"
+                v-model="form.description"
                 placeholder="Описание"
+                rows = 5
+                max-rows = 10
                 required
-            ></b-form-input>
-            </b-form-group>
+            >
+            </b-form-textarea>
+
+            <div >
+                <UploadImages class="mt-3" 
+                    :max=15 
+                    fileError="Поддерживаются файлы формата .png, .jpg, .jpeg"
+                    maxError="Загружено максимальное количество изображений!"
+                    @change="handleImages"/>
+            </div>
+            <b-button class="mt-3"  block type="submit" variant="primary">Опубликовать</b-button>
+
             </div>
         </b-form>
-    </div>    
+  </div>
 </template>
 
 <style scoped>
@@ -182,30 +119,51 @@
 </style>
 
 <script>
+  import UploadImages from "vue-upload-drop-images"
   export default {
+    components: {
+        UploadImages,
+    },
     data() {
       return {
-        fuel: null,
+        err: null,
+        image: null,
+        brand: null,
+        form: {
+            power: null,
+            fuel: null,
+            drive: null,
+            transmission: null,
+            carbody: null,
+            description: null,
+            price: null,
+            mileage: null,
+            prod_year: null,
+            owners: null,
+            color: null,
+            carmodel: null,
+        },
         fuel_options: [
-          { value: 'PR', text: 'Бензин'},
-          { value: 'DS', text: 'Дизель' },
-          { value: 'EL', text: 'Электричество' },
+            { value: null, text: 'Двигатель', disabled: true},
+            { value: 'PR', text: 'Бензин'},
+            { value: 'DS', text: 'Дизель' },
+            { value: 'EL', text: 'Электричество' },
         ],
-        drive: null,
         drive_options: [
+            { value: null, text: 'Привод', disabled: true},
             { value: 'FW', text: 'Передний'},
             { value: 'AW', text: 'Полный'},
             { value: 'RW', text: 'Задний'},
         ],
-        transmission: null,
         transmission_options: [
+            { value: null, text: 'Коробка', disabled: true},
             { value: 'MT', text: 'Механическая'},
             { value: 'AT', text: 'Автоматическая'},
             { value: 'CT', text: 'Вариатор'},
             { value: 'RT', text: 'Роботизированная'},
         ],
-        carbody: null,
         carbody_options: [
+            { value: null, text: 'Кузов', disabled: true},
             { value: 'SD', text: 'Седан'},
             { value: 'HB', text: 'Хэтчбэк'},
             { value: 'LB', text: 'Лифтбэк'},
@@ -218,8 +176,8 @@
             { value: 'LM', text: 'Лимузин'},
             { value: 'VN', text: 'Фургон'},
         ],
-        color: null,
         color_options: [
+            { value: null, text: 'Выберите цвет', disabled: true},
             { value: 'BK', text: 'Черный'},
             { value: 'SI', text: 'Серебристый'},
             { value: 'WH', text: 'Белый'},
@@ -235,6 +193,11 @@
             { value: 'OR', text: 'Оранжевый'},
         ]
       }
+    },
+    methods: {
+        handleImages(files){
+            this.form.image = files; 
+        },
     }
-  }
+}
 </script>
