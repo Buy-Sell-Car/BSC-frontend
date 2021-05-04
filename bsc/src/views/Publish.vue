@@ -6,7 +6,7 @@
             <div class="col-6">
             <b-form-select class="mt-3" @change="carbrand_entered"
                 id="input-1"
-                v-model="form.brand"
+                v-model="brand"
                 :options="brand_options"
                 required
             ></b-form-select>
@@ -133,6 +133,7 @@
         carmodel_disabled: true,
         showDismissibleAlert: false,
         showSuccess: false,
+        brand: null,
         form: {
             power: null,
             fuel: null,
