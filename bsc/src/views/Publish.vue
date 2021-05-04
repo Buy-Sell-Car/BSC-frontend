@@ -221,9 +221,12 @@
             this.form.image = files; 
         },
         carbrand_entered() {
+            this.carmodel_options = [{ value: null, text: 'Выберите модель', disabled: true}];
             this.carmodel_disabled = false;
+            let link = '/api/models/?brand=' + this.brand;
+            this.form.carmodel = null;
             this.$api
-            .get('/api/models/')
+            .get(link)
             .then(response => {
                 let models_arr = response.data;
                 for (let car in models_arr) {
