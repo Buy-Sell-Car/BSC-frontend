@@ -1,20 +1,22 @@
 <template>
     <div>
+        <b-alert v-model="showDismissibleAlert" variant="danger">{{this.err}}</b-alert>
+        <b-alert v-model="showSuccess" variant="success">Объявление добавлено!</b-alert>
         <b-form class="row" @submit.prevent="publish">
             <div class="col-6">
-            <b-form-input class="mt-3"
+            <b-form-select class="mt-3" @change="carbrand_entered"
                 id="input-1"
                 v-model="form.brand"
-                placeholder="Марка"
+                :options="brand_options"
                 required
-            ></b-form-input>
+            ></b-form-select>
 
-            <b-form-input class="mt-3"
+            <b-form-select class="mt-3" :disabled="carmodel_disabled"
                 id="input-2"
                 v-model="form.carmodel"
-                placeholder="Модель"
+                :options="carmodel_options"
                 required
-            ></b-form-input>
+            ></b-form-select>
 
             <b-form-input class="mt-3"
                 id="input-3"
@@ -128,7 +130,9 @@
       return {
         err: null,
         image: null,
-        brand: null,
+        carmodel_disabled: true,
+        showDismissibleAlert: false,
+        showSuccess: false,
         form: {
             power: null,
             fuel: null,
@@ -191,12 +195,64 @@
             { value: 'PU', text: 'Фиолетовый'},
             { value: 'PI', text: 'Розовый'},
             { value: 'OR', text: 'Оранжевый'},
+        ],
+        brand_options: [
+            { value: null, text: 'Выберите марку', disabled: true}
+        ],
+        carmodel_options: [
+            { value: null, text: 'Выберите модель', disabled: true}
         ]
       }
+    },
+    created() {
+        let brands_arr = [];
+        this.$api
+            .get('/api/brands/')
+            .then(response => {
+                brands_arr = response.data;
+                for (let car in brands_arr) {
+                    this.brand_options.push({value: brands_arr[car].id, text: brands_arr[car].name})
+                }
+            });
     },
     methods: {
         handleImages(files){
             this.form.image = files; 
+        },
+        carbrand_entered() {
+            this.carmodel_disabled = false;
+            this.$api
+            .get('/api/models/')
+            .then(response => {
+                let models_arr = response.data;
+                for (let car in models_arr) {
+                    this.carmodel_options.push({value: models_arr[car].id, text: models_arr[car].name})
+                }
+            });
+        },
+        publish() {
+            let token = this.$store.state.accessToken;
+            this.$api.post('/api/adverts/', {
+                power: this.form.power,
+                fuel: this.form.fuel,
+                drive: this.form.drive,
+                transmission: this.form.transmission,
+                carbody: this.form.carbody,
+                description: this.form.description,
+                price: this.form.price,
+                mileage: this.form.mileage,
+                prod_year: this.form.prod_year,
+                owners: this.form.owners,
+                color: this.form.color,
+                carmodel: this.form.carmodel,
+            }, { headers: { Authorization: "Bearer " + token } })
+            .then(() => {
+                this.showSuccess = true;
+            })
+            .catch(err => {
+                this.err = err.request.response;
+                this.showDismissibleAlert = true;
+            })
         },
     }
 }
