@@ -109,7 +109,7 @@
                     maxError="Загружено максимальное количество изображений!"
                     @change="handleImages"/>
             </div>
-            <b-button class="mt-3"  block type="submit" variant="primary">Опубликовать</b-button>
+            <b-button class="mt-3"  block type="submit" variant="primary" :disabled="send_disabled">Опубликовать</b-button>
 
             </div>
         </b-form>
@@ -131,6 +131,7 @@
         err: null,
         image: null,
         carmodel_disabled: true,
+        send_disabled: true,
         showDismissibleAlert: false,
         showSuccess: false,
         brand: null,
@@ -218,7 +219,11 @@
     },
     methods: {
         handleImages(files){
-            this.form.image = files; 
+            this.image = files;
+            if (files.length > 0)
+                this.send_disabled = false
+            else
+                this.send_disabled = true
         },
         carbrand_entered() {
             this.carmodel_options = [{ value: null, text: 'Выберите модель', disabled: true}];
@@ -236,20 +241,14 @@
         },
         publish() {
             let token = this.$store.state.accessToken;
-            this.$api.post('/api/adverts/', {
-                power: this.form.power,
-                fuel: this.form.fuel,
-                drive: this.form.drive,
-                transmission: this.form.transmission,
-                carbody: this.form.carbody,
-                description: this.form.description,
-                price: this.form.price,
-                mileage: this.form.mileage,
-                prod_year: this.form.prod_year,
-                owners: this.form.owners,
-                color: this.form.color,
-                carmodel: this.form.carmodel,
-            }, { headers: { Authorization: "Bearer " + token } })
+            let formData = new FormData();
+            for (let obj in this.form) {
+                formData.append(obj, this.form[obj]);
+            }
+            for (let img in this.image) {
+                formData.append('file', this.image[img]);
+            }
+            this.$api.post('/api/adverts/', formData, { headers: { Authorization: "Bearer " + token, "Content-Type": "multipart/form-data" } })
             .then(() => {
                 this.showSuccess = true;
             })
