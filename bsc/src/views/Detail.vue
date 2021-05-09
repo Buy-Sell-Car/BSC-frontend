@@ -19,7 +19,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <b-button v-show="!is_in_fav" @click="addFav"
+        <b-button v-show="!is_in_fav" @click="addFav" title="Только для авторизованных пользователей" :disabled="!$store.state.id"
           ><b-icon-heart></b-icon-heart> В избранное</b-button
         >
         <b-button v-show="is_in_fav" @click="removeFav"
