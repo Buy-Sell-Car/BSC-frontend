@@ -44,12 +44,14 @@
         >
           <b-carousel-slide v-for="img in advert.advertimage_set">
             <template #img>
+            <div class="img-frame">
               <img
                 class="d-block img-fluid w-100"
                 width="1024"
                 height="480"
                 :src="img.image"
               />
+            </div>
             </template>
           </b-carousel-slide>
         </b-carousel>
@@ -228,6 +230,18 @@ h1 {
   padding-left: 20px;
   padding-top: 20px;
 }
+
+.img-frame {
+  height: 480px;
+  width: 1024px;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 </style>
 
 <script>
