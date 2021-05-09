@@ -1,12 +1,12 @@
 <template>
 <div>
   <div class="filter m-auto">
+  <b-form @submit.prevent="find">
     <div class="row">
       <b-form-select class="ml-5 mt-3 col-4" @change="carbrand_entered"
           id="input-1"
-          v-model="brand"
+          v-model="filters.brand"
           :options="brand_options"
-          required
       ></b-form-select>
       <b-form-select class="ml-4 mt-3 col-4" :disabled="carmodel_disabled"
           id="input-2"
@@ -72,8 +72,6 @@
         id="input-13"
         v-model="filters.withPhoto"
         name="withPhoto"
-        value="yes"
-        unchecked-value="no"
       >Только с фото</b-form-checkbox>
     </div>
     <div class="row">
@@ -92,10 +90,11 @@
           v-model="filters.sort"
           :options="sort_options"
       ></b-form-select>
-      <b-button class="mb-3 ml-4 mt-2 col-2" 
+      <b-button class="mb-3 ml-4 mt-2 col-2" type="submit"
         variant="info"
       >Найти</b-button>
     </div>
+  </b-form>
   </div>
   <div class="home">
     <AdvertList 
@@ -128,8 +127,8 @@ export default {
     this.carmodel_disabled = false;
     return {
       adverts: null,
-      brand: null,
       filters: {
+          brand: null,
           fuel: null,
           drive: null,
           transmission: null,
@@ -143,14 +142,14 @@ export default {
           color: null,
           carmodel: null,
           sort: 'PD',
-          withPhoto: 'no',
+          withPhoto: false,
       },
       sort_options: [
         { value: 'PD', text: 'По дате размещения'},
         { value: 'YN', text: 'По году: новее'},
         { value: 'YO', text: 'По году: старше'},
         { value: 'MI', text: 'По пробегу'},
-        { value: 'PI', text: 'По возростанию цены'},
+        { value: 'PI', text: 'По возрастанию цены'},
         { value: 'PD', text: 'По убыванию цены'},
       ],
       owners_options: [
@@ -245,6 +244,17 @@ export default {
           }
           });
       },
+    find() {
+      let query = new URLSearchParams();
+      for (let filter in this.filters) {
+        if (this.filters[filter] != null)
+            query.append(filter, this.filters[filter]);
+      }
+      let link = '/api/adverts/?' + query.toString();
+      this.$api
+        .get(link)
+        .then(response => (this.adverts = response.data));
+    }
   }
 }
 </script>
