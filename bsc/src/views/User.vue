@@ -37,18 +37,18 @@
   </div>
   <div>
     <h3 class="mt-5">Избранные Объявления</h3>
-    <div class="favAdverts">
+    <div class="favAdverts" v-if="user">
       <AdvertList 
-        v-bind:adverts="adverts"
+        v-bind:adverts="user.favourite"
       />
     </div>
   </div>
 
   <div>
     <h3 class="mt-5">Мои объявления</h3>
-    <div class="favAdverts mb-5">
+    <div class="favAdverts mb-5" v-if="user">
       <AdvertList 
-        v-bind:adverts="adverts"
+        v-bind:adverts="user.advert_set"
       />
     </div>
   </div>
@@ -78,8 +78,6 @@ export default {
   name: 'User',
   data() {
     return {
-      username: null,
-      adverts: null,
       user:null,
       field_state: {
           first_name: true,
@@ -99,9 +97,6 @@ export default {
     this.$api
       .get('/api/profiles/'+this.id+'/')
       .then(response => (this.user = response.data));
-    this.$api
-      .get('/api/adverts/')
-      .then(response => (this.adverts = response.data));
   },
   methods: {
     updateUser() {
