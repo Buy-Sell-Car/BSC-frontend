@@ -150,7 +150,7 @@ export default {
         { value: 'YO', text: 'По году: старше'},
         { value: 'MI', text: 'По пробегу'},
         { value: 'PI', text: 'По возрастанию цены'},
-        { value: 'PD', text: 'По убыванию цены'},
+        { value: 'PM', text: 'По убыванию цены'},
       ],
       owners_options: [
         { value: null, text: 'Неважно'},

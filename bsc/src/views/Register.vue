@@ -116,7 +116,13 @@
           tel: this.phone
         })
         .then(() => {
-            this.$router.push({name: 'user'})
+            this.$store.dispatch('userLogin', {
+              username: this.username,
+              password: this.password
+            })
+            .then(() => {
+              this.$router.push({name: 'user', params: {id: this.$store.state.id}})
+        })
         })
         .catch(err => {
             this.err = err.request.response,

@@ -6,10 +6,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    accessToken: null,
-    refreshToken: null,
-    username: null,
-    id: null,
+    accessToken: localStorage.getItem('accessToken') || null,
+    refreshToken: localStorage.getItem('refreshToken') || null,
+    username: localStorage.getItem('username') || null,
+    id: localStorage.getItem('id') || null,
   },
   mutations: {
     updateStorage (state, {access, refresh, username, id}) {
@@ -33,7 +33,12 @@ const store = new Vuex.Store({
           password: usercredentials.password
         })
         .then(response => {
-          context.commit('updateStorage', { access:response.data.access, refresh:response.data.refresh, username: response.data.user, id:response.data.id})
+          context.commit('updateStorage', { access:response.data.access, refresh:response.data.refresh, username: response.data.user, id:response.data.id});
+          localStorage.setItem('accessToken', response.data.access);
+          localStorage.setItem('refreshToken', response.data.refresh);
+          localStorage.setItem('username', response.data.user);
+          localStorage.setItem('id', response.data.id);
+          getApi.defaults.headers.common['Authorization'] = "Bearer " + response.data.access;
           resolve()
         })
         .catch(err => {
@@ -43,7 +48,11 @@ const store = new Vuex.Store({
     },
     userLogout (context) {
       if (context.getters.loggedIn) {
-        context.commit('destroyToken')
+        context.commit('destroyToken');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('username');
+        localStorage.removeItem('id');
       }
     }
   },

@@ -248,7 +248,7 @@
             for (let img in this.image) {
                 formData.append('file', this.image[img]);
             }
-            this.$api.post('/api/adverts/', formData, { headers: { Authorization: "Bearer " + token, "Content-Type": "multipart/form-data" } })
+            this.$api.post('/api/adverts/', formData, { headers: { "Content-Type": "multipart/form-data" } })
             .then(() => {
                 this.showSuccess = true;
             })

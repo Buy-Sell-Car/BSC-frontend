@@ -100,8 +100,7 @@ export default {
   },
   methods: {
     updateUser() {
-      let token = this.$store.state.accessToken;
-      this.$api.patch('/api/profiles/'+this.id+'/', this.user, { headers: { Authorization: "Bearer " + token } })
+      this.$api.patch('/api/profiles/'+this.id+'/', this.user)
         .then(() => {
             this.showSuccess = true;
         })

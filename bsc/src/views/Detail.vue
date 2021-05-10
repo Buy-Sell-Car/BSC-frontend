@@ -267,17 +267,15 @@ export default {
     addFav() {
       let str =
         "/api/user/" + this.$store.state.id + "/likes/" + this.advert.id + "/";
-      let token = this.$store.state.accessToken;
       this.$api
-        .put(str, {}, { headers: { Authorization: "Bearer " + token } })
+        .put(str, {})
         .then((response) => this.updateAdvert());
     },
     removeFav() {
       let str =
         "/api/user/" + this.$store.state.id + "/likes/" + this.advert.id + "/";
-      let token = this.$store.state.accessToken;
       this.$api
-        .delete(str, { headers: { Authorization: "Bearer " + token } })
+        .delete(str)
         .then((response) => this.updateAdvert());
     },
     getUser() {
