@@ -240,7 +240,6 @@
             });
         },
         publish() {
-            let token = this.$store.state.accessToken;
             let formData = new FormData();
             for (let obj in this.form) {
                 formData.append(obj, this.form[obj]);
@@ -249,8 +248,9 @@
                 formData.append('file', this.image[img]);
             }
             this.$api.post('/api/adverts/', formData, { headers: { "Content-Type": "multipart/form-data" } })
-            .then(() => {
+            .then((response) => {
                 this.showSuccess = true;
+                this.$router.push({name: 'Detail', params: {id: response.data.id}})
             })
             .catch(err => {
                 this.err = err.request.response;
