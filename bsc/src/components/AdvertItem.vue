@@ -35,12 +35,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-6 mt-lg-auto mt-2">
+                    <div class="col-lg-2 col-6 mt-lg-0 mt-2">
                         <div class="highlight_price">
                             {{ advert.price }} ₽
                         </div>
                     </div>
-                    <div class="col-lg-2 col-6 mt-lg-auto mt-2">
+                    <div class="col-lg-2 col-6 mt-lg-0 mt-2">
                         {{ advert.mileage }} км
                     </div>
             </div>
