@@ -37,18 +37,16 @@
           controls
           indicators
           background="#ababab"
-          img-width="1024"
-          img-height="480"
+          
           @sliding-start="onSlideStart"
           @sliding-end="onSlideEnd"
         >
-          <b-carousel-slide v-for="img in advert.advertimage_set">
+          <b-carousel-slide v-for="img in advert.advertimage_set" :key="img.id">
             <template #img>
             <div class="img-frame">
               <img
                 class="d-block img-fluid w-100"
-                width="1024"
-                height="480"
+                
                 :src="img.image"
               />
             </div>
@@ -242,7 +240,6 @@ h1 {
 
 .img-frame {
   height: 480px;
-  width: 1024px;
 }
 
 img {
