@@ -1,10 +1,10 @@
 <template>
   <div v-if="advert">
-    <div class="row mt-5">
-      <h1 class="col-lg-8 col-6">
+    <div class="row mt-lg-5">
+      <h1 class="col-lg-8 col-12">
         {{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}
       </h1>
-      <h1 class="col-lg-4 col-6">{{ advert.price }} ₽</h1>
+      <h1 class="col-lg-4 col-12">{{ advert.price }} ₽</h1>
     </div>
     <div class="row CardHead-module__shortInfo">
       <div class="col-12">
@@ -224,6 +224,9 @@ h1 {
 @media (max-width: 960px) {
     .comment {
         font-size: 1em;
+    }
+    h1 {
+        font-size: 1.5rem;
     }
 }
 
