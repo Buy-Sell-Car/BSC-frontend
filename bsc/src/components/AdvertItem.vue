@@ -1,13 +1,13 @@
 <template>
-    <ul class="list-group mt-4">
-        <li class="list-group-item">
+    <b-list-group class="mt-4">
+        <b-list-group-item>
         <b-link v-if="advert" :to="{name: 'Detail', params: {id: advert.id}}">
             <div class="row">
-                    <div class="wrapper exmp3">
+                    <div class="col-lg-3 col-12 wrapper">
                         <img class="main_img" v-bind:src="advert.advertimage_set[0].image"  alt="">
                     </div>
-                    <div class="col-5">
-                        <h5 class="carmodel">
+                    <div class="col-lg-5 col-12">
+                        <h5 class="carmodel mt-lg-auto mt-2">
                             {{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}
                         </h5>
                         <div class="summary_params">
@@ -35,21 +35,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-lg-2 col-6 mt-lg-auto mt-2">
                         <div class="highlight_price">
                             {{ advert.price }} ₽
                         </div>
-                        <div class="mt-2">
-                        </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col-lg-2 col-6 mt-lg-auto mt-2">
                         {{ advert.mileage }} км
                     </div>
-                </div>
             </div>
         </b-link>
-        </li>
-    </ul>
+        </b-list-group-item>
+    </b-list-group>
 </template>
 
 <style scoped>
@@ -57,7 +54,7 @@
         width: 205px;
         height: 154px;
       }
-      .exmp3 img {
+      .wrapper img {
         object-fit: cover;
         width: 100%;
         height: 100%;
@@ -67,7 +64,6 @@
       }
       .column_params {
           box-sizing: border-box;
-          width: 180px;
           padding-right: 12px;
       }
       .item_params {

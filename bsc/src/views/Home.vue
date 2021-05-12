@@ -13,34 +13,34 @@
           v-model="filters.carmodel"
           :options="carmodel_options"
       ></b-form-select>
-      <b-form-select class="ml-4 mt-3 col-2"
+      <b-form-select class="ml-lg-4 ml-5 mt-3 col-lg-2 col-9"
           id="input-3"
           v-model="filters.color"
           :options="color_options"
       ></b-form-select>
     </div>
     <div class="row">
-      <b-form-select class="ml-5 col-2 mt-2 leftInput"
+      <b-form-select class="ml-5 col-5 col-lg-2 mt-2 leftInput"
           id="input-4"
           v-model="filters.carbody"
           :options="carbody_options"
       ></b-form-select>
-      <b-form-select class="mt-2 col-2 rightInput"
+      <b-form-select class="mt-2 col-4 col-lg-2 rightInput"
           id="input-5"
           v-model="filters.transmission"
           :options="transmission_options"
       ></b-form-select>
-      <b-form-select class="ml-4 mt-2 col-2 leftInput"
+      <b-form-select class="ml-lg-4 ml-5 mt-2 col-5 col-lg-2 leftInput"
           id="input-6"
           v-model="filters.fuel"
           :options="fuel_options"
       ></b-form-select>
-      <b-form-select class="mt-2 col-2 rightInput"
+      <b-form-select class="mt-2 col-4 col-lg-2 rightInput"
           id="input-7"
           v-model="filters.drive"
           :options="drive_options"
       ></b-form-select>
-      <b-form-select class="ml-4 mt-2 col-2"
+      <b-form-select class="ml-lg-4 ml-5 mt-2 col-lg-2 col-9"
           id="input-8"
           v-model="filters.owners"
           :options="owners_options"
@@ -68,29 +68,29 @@
           v-model="filters.price_to"
           placeholder="до"
       ></b-form-input>
-      <b-form-checkbox  class="ml-4 mt-3 col-2"
+      <b-form-checkbox  class="ml-lg-4 ml-5 mt-3 col-lg-2 col-9"
         id="input-13"
         v-model="filters.withPhoto"
         name="withPhoto"
       >Только с фото</b-form-checkbox>
     </div>
     <div class="row">
-      <b-form-input class="ml-5 mt-2 col-2 leftInput"
+      <b-form-input class="ml-5 mt-2 col-lg-2 col-5 leftInput"
           id="input-14"
           v-model="filters.mileage_from"
           placeholder="Пробег от"
       ></b-form-input>
-      <b-form-input class="mt-2 col-2 rightInput"
+      <b-form-input class="mt-2 col-lg-2 col-4 rightInput"
           id="input-15"
           v-model="filters.mileage_to"
           placeholder="до"
       ></b-form-input>
-      <b-form-select class="ml-4 mt-2 col-4"
+      <b-form-select class="ml-lg-4 ml-5 mt-2 col-lg-4 col-5"
           id="input-16"
           v-model="filters.sort"
           :options="sort_options"
       ></b-form-select>
-      <b-button class="mb-3 ml-4 mt-2 col-2" type="submit"
+      <b-button class="mb-3 ml-4 mt-2 col-lg-2 col-3" type="submit"
         variant="info"
       >Найти</b-button>
     </div>

@@ -1,10 +1,10 @@
 <template>
   <div v-if="advert">
     <div class="row mt-5">
-      <h1 class="col-8">
+      <h1 class="col-lg-8 col-6">
         {{ advert.carmodel.brand.name }} {{ advert.carmodel.name }}
       </h1>
-      <h1 class="col-4">{{ advert.price }} ₽</h1>
+      <h1 class="col-lg-4 col-6">{{ advert.price }} ₽</h1>
     </div>
     <div class="row CardHead-module__shortInfo">
       <div class="col-12">
@@ -30,7 +30,7 @@
     </div>
     <div class="row">
       <!-- Карусель -->
-      <div class="col-8">
+      <div class="col-lg-8 col-12">
         <b-carousel
           id="carousel-1"
           v-model="slide"
@@ -56,7 +56,7 @@
           </b-carousel-slide>
         </b-carousel>
       </div>
-      <div class="col-4">
+      <div class="col-lg-4 col-12">
         <ul class="СardInfo">
           <li class="CardInfo_row">
             <span class="CardRow_label">Год выпуска </span>
@@ -118,7 +118,7 @@
         </div>
       </div>
     </div>
-    <div class="mt-5 col-8">
+    <div class="mt-5 col-lg-8 col-12">
       <div class="comment">Комментарий продавца</div>
       <div class="ad__text">{{ advert.description }}</div>
       <br />
@@ -221,6 +221,12 @@ h1 {
   background-color: #fff;
 }
 
+@media (max-width: 960px) {
+    .comment {
+        font-size: 1em;
+    }
+}
+
 .ad__text {
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -240,6 +246,12 @@ img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 960px) {
+    .img-frame {
+        height: 240px;
+    }
 }
 
 </style>
